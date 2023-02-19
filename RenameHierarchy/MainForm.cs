@@ -39,6 +39,43 @@ namespace RenameHierarchy
         {
             // The InitializeComponent() call is required for Windows Forms designer support.
             this.InitializeComponent();
+
+            // Update the program by registry key
+            this.UpdateByRegistryKey();
+        }
+
+        /// <summary>
+        /// Updates the program by registry key.
+        /// </summary>
+        private void UpdateByRegistryKey()
+        {
+            // Try to set openRandom key
+            using (var openRandomKey = Registry.CurrentUser.OpenSubKey(this.renameHierarchyKeyList[0]))
+            {
+                // Check for no returned registry key
+                if (openRandomKey == null)
+                {
+                    // Disable remove button
+                    this.removeButton.Enabled = false;
+
+                    // Enable add button
+                    this.addButton.Enabled = true;
+
+                    // Update status text
+                    this.activityToolStripStatusLabel.Text = "Inactive";
+                }
+                else
+                {
+                    // Disable add button
+                    this.addButton.Enabled = false;
+
+                    // Enable remove button
+                    this.removeButton.Enabled = true;
+
+                    // Update status text
+                    this.activityToolStripStatusLabel.Text = "Active";
+                }
+            }
         }
 
         /// <summary>
@@ -117,6 +154,26 @@ namespace RenameHierarchy
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>
         private void OnOptionsToolStripMenuItemDropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            // TODO Add code
+        }
+
+        /// <summary>
+        /// Handles the main form load.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnMainFormLoad(object sender, EventArgs e)
+        {
+            // TODO Add code
+        }
+
+        /// <summary>
+        /// Handles the main form form closing.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnMainFormFormClosing(object sender, FormClosingEventArgs e)
         {
             // TODO Add code
         }
