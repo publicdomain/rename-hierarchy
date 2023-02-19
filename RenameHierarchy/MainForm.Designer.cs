@@ -147,6 +147,7 @@ namespace RenameHierarchy
         	// 
         	// freeReleasesPublicDomainisToolStripMenuItem
         	// 
+        	this.freeReleasesPublicDomainisToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("freeReleasesPublicDomainisToolStripMenuItem.Image")));
         	this.freeReleasesPublicDomainisToolStripMenuItem.Name = "freeReleasesPublicDomainisToolStripMenuItem";
         	this.freeReleasesPublicDomainisToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
         	this.freeReleasesPublicDomainisToolStripMenuItem.Text = "Free Releases @ PublicDomain.is";

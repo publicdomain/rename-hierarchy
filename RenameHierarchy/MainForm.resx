@@ -121,6 +121,27 @@
     <value>275, 54</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="freeReleasesPublicDomainisToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAN9SURBVDhPZZNdbFNlGMfPFdwaE6TxIyQ6b7haotxols3F
+        BE7ESIKLDhRcHF4sMyaAAjEwgWVWhxtr1zmQzVW2taOsW+vomq2yFbp+rN3atee057OnH6etLWvBKVPT
+        6t+zKQTimzx535v3977Pk9+fIB5Ze6qIrcf27iAt56qN4fFmecWmrXhHj1UMR5+RLzU9YRz+REVytj1b
+        H73z8Nyya5vqSM3Tms92P3V38MizMJ6qx7Xzh2A824jvP94FffM2mD/dftczUKeR5lpUj0Gkaw2q707U
+        W3QfPY+b2n0IOU1gYlHwQgKckESMprHkMMDd/xYCV15BxPqhxddb+y+krWHnlkXTIQ1jawBlaUZ4YQr0
+        sgvRkBv0ih900AUu6oMk0RC4FSS97ZDm3od3iNRQbcQWwqQmyaClsZiPnkfA0oGUdwDJW18j5daCm/sG
+        grMb2cUe/LzUhUz4KkRqFiXxKwTG3yzeaK8mCbepyZChTyMpLYByaPEbPwzZ3Y5CZBDrcQPyATUy3i+x
+        Sn+L9dQkZF8vUpwVidAJWC+8ZiAox8l0MTcDQRTBu3T4Q+wDr/yCXZrAutCHNfYihCXlZUlAXrTiPq8D
+        7x9FQZ7GTP/baYJxtZeLBUoZVgJScAiVVSPupa5iLTuGv0rjKPE9kCgzuHgWcc6P33MjEBXgnVwIN/VN
+        ZYK5/Xm5lHcoAAkpegx/r/2ESuk6/rwzilL8MkqC0hJvVwAZBbCI9cwPEAN6rGZtmB86UCYiM63pItMF
+        QWAhUwZU8lPIREcQ572g3Sb8wg4jHZ2AGGeRZ8dwn+uD4NOjQKsx0/dGmnCPfWCITh5UerYhsaxXBjcC
+        zqdUPIeIZxoFfycKIS3uSWb8GtNB9l4Ec3sA4ev7lSHWGQhz917Sod1dtF84iIijB3lqFJRrBLyUwcqC
+        Day9DbmATmnFjHTwCiILZtg738FsT03xRufL5KZIHsN7mokzNZjtakQsYFfMC28CmBizKRUX9SMuRZV9
+        GfP9rZjtfB2ewf9E2rBRmmpQ9R+vs6jffRHOS4fBBqzgWRq8KCmVAM/FwPgm4Bs4ALeudkPlyYcqPwhF
+        S+1GmJ7TnN7/QsnZ+yqSzhZkgx2Q/V8g9mMj5rurMX22quQdqlfCdPjxMD2AbMaZ3EFOqV8ypm8dlVcZ
+        Yznl6SjbzlXJl5ufNA63/j/O/wDAraICLhMozgAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="originalThreadDonationCodercomToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
