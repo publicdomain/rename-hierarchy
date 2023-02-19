@@ -49,11 +49,11 @@ namespace RenameHierarchy
         /// </summary>
         private void UpdateByRegistryKey()
         {
-            // Try to set openRandom key
-            using (var openRandomKey = Registry.CurrentUser.OpenSubKey(this.renameHierarchyKeyList[0]))
+            // Try to set renameHierarchy key
+            using (var renameHierarchyKey = Registry.CurrentUser.OpenSubKey(this.renameHierarchyKeyList[0]))
             {
                 // Check for no returned registry key
-                if (openRandomKey == null)
+                if (renameHierarchyKey == null)
                 {
                     // Disable remove button
                     this.removeButton.Enabled = false;
@@ -85,7 +85,32 @@ namespace RenameHierarchy
         /// <param name="e">Event arguments.</param>
         private void OnAddButtonClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            try
+            {
+                // Iterate renameHierarchy registry keys
+                foreach (string renameHierarchyKey in this.renameHierarchyKeyList)
+                {
+                    // Add renameHierarchy command to registry
+                    RegistryKey registryKey;
+                    registryKey = Registry.CurrentUser.CreateSubKey(renameHierarchyKey);
+                    registryKey.SetValue("icon", Application.ExecutablePath);
+                    registryKey.SetValue("position", "-");
+                    registryKey = Registry.CurrentUser.CreateSubKey($"{renameHierarchyKey}\\command");
+                    registryKey.SetValue(string.Empty, $"{Path.Combine(Application.StartupPath, Application.ExecutablePath)} \"%1\"");
+                    registryKey.Close();
+                }
+
+                // Update the program by registry key
+                this.UpdateByRegistryKey();
+
+                // Notify user
+                MessageBox.Show($"Rename hierarchy context menu added!{Environment.NewLine}{Environment.NewLine}Right-click in Windows Explorer to use it.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                // Notify user
+                MessageBox.Show($"Error when adding rename hierarchy context menu to registry.{Environment.NewLine}{Environment.NewLine}Message:{Environment.NewLine}{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>
