@@ -120,7 +120,26 @@ namespace RenameHierarchy
         /// <param name="e">Event arguments.</param>
         private void OnRemoveButtonClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            try
+            {
+                // Iterate renameHierarchy registry keys 
+                foreach (var renameHierarchyKey in this.renameHierarchyKeyList)
+                {
+                    // Remove renameHierarchy command to registry
+                    Registry.CurrentUser.DeleteSubKeyTree(renameHierarchyKey);
+                }
+
+                // Update the program by registry key
+                this.UpdateByRegistryKey();
+
+                // Notify user
+                MessageBox.Show("Rename hierarchy context menu removed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                // Notify user
+                MessageBox.Show($"Error when removing rename hierarchy command from registry.{Environment.NewLine}{Environment.NewLine}Message:{Environment.NewLine}{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>
