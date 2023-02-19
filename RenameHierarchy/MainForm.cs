@@ -29,9 +29,19 @@ namespace RenameHierarchy
         private Icon associatedIcon = null;
 
         /// <summary>
+        /// The settings data.
+        /// </summary>
+        private SettingsData settingsData = null;
+
+        /// <summary>
         /// The rename hierarchy key list.
         /// </summary>
         private List<string> renameHierarchyKeyList = new List<string> { @"Software\Classes\directory\shell\Rename hierarchy" };
+
+        /// <summary>
+        /// The settings data path.
+        /// </summary>
+        private string settingsDataPath = $"{Application.ProductName}-SettingsData.txt";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:RenameHierarchy.MainForm"/> class.
@@ -40,6 +50,26 @@ namespace RenameHierarchy
         {
             // The InitializeComponent() call is required for Windows Forms designer support.
             this.InitializeComponent();
+
+            /* Set icons */
+
+            using (System.Drawing.Bitmap bm = (System.Drawing.Bitmap)this.freeReleasesPublicDomainisToolStripMenuItem.Image)
+            {
+                // Set associated icon from exe file
+                this.associatedIcon = System.Drawing.Icon.FromHandle(bm.GetHicon());
+            }
+
+            /* Settings data */
+
+            // Check for settings file
+            if (!File.Exists(this.settingsDataPath))
+            {
+                // Create new settings file
+                this.SaveSettingsFile(this.settingsDataPath, new SettingsData());
+            }
+
+            // Load settings from disk
+            this.settingsData = this.LoadSettingsFile(this.settingsDataPath);
 
             // Update the program by registry key
             this.UpdateByRegistryKey();
@@ -200,7 +230,11 @@ namespace RenameHierarchy
         /// <param name="e">Event arguments.</param>
         private void OnOptionsToolStripMenuItemDropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            // TODO Add code
+            // Set tool strip menu item
+            ToolStripMenuItem toolStripMenuItem = (ToolStripMenuItem)e.ClickedItem;
+
+            // Toggle checked
+            toolStripMenuItem.Checked = !toolStripMenuItem.Checked;
         }
 
         /// <summary>
