@@ -14,6 +14,7 @@ namespace RenameHierarchy
     using System.Reflection;
     using System.Windows.Forms;
     using System.Xml.Serialization;
+    using Microsoft.VisualBasic;
     using Microsoft.Win32;
     using PublicDomain;
 
@@ -44,6 +45,11 @@ namespace RenameHierarchy
         private string settingsDataPath = $"{Application.ProductName}-SettingsData.txt";
 
         /// <summary>
+        /// The associated icon bitmap.
+        /// </summary>
+        private Bitmap associatedIconBitmap = null;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:RenameHierarchy.MainForm"/> class.
         /// </summary>
         public MainForm()
@@ -53,11 +59,11 @@ namespace RenameHierarchy
 
             /* Set icons */
 
-            using (System.Drawing.Bitmap bm = (System.Drawing.Bitmap)this.freeReleasesPublicDomainisToolStripMenuItem.Image)
-            {
-                // Set associated icon from exe file
-                this.associatedIcon = System.Drawing.Icon.FromHandle(bm.GetHicon());
-            }
+            // Set the bitmap for the associated icon
+            this.associatedIconBitmap = (Bitmap)this.freeReleasesPublicDomainisToolStripMenuItem.Image;
+
+            // Set associated icon from exe file
+            this.associatedIcon = Icon.FromHandle(this.associatedIconBitmap.GetHicon());
 
             /* Settings data */
 
@@ -220,7 +226,12 @@ namespace RenameHierarchy
         /// <param name="e">Event arguments.</param>
         private void OnNameLengthToolStripMenuItemClick(object sender, EventArgs e)
         {
-
+            // Try to parse integer from user input
+            if (int.TryParse(Interaction.InputBox("Enter new name length:", "Set name length", this.settingsData.NameLength.ToString()), out int parsedInt) && parsedInt > 0)
+            {
+                // Set 
+                this.settingsData.NameLength = parsedInt;
+            }
         }
 
         /// <summary>
