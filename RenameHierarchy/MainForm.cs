@@ -265,7 +265,11 @@ namespace RenameHierarchy
         /// <param name="e">Event arguments.</param>
         private void OnMainFormFormClosing(object sender, FormClosingEventArgs e)
         {
-            // TODO Add code
+            // Set enable undo 
+            this.settingsData.EnableUndo = this.enableUndoToolStripMenuItem.Checked;
+
+            // Save settings data to disk
+            this.SaveSettingsFile(this.settingsDataPath, this.settingsData);
         }
 
         /// <summary>
