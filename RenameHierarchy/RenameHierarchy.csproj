@@ -47,6 +47,9 @@
     <Reference Include="System.Xml.Linq">
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="AlphaFS">
+      <HintPath>Resources\AlphaFS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutForm.cs" />
@@ -60,11 +63,13 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SettingsData.cs" />
+    <Compile Include="Shared.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Resources\publicdomain.is_7-8-vista-xp.ico" />
     <None Include="Resources\rename-27285_640x640.ico" />
+    <None Include="Resources\AlphaFS.dll" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources" />

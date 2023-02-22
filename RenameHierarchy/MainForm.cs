@@ -42,7 +42,7 @@ namespace RenameHierarchy
         /// <summary>
         /// The settings data path.
         /// </summary>
-        private string settingsDataPath = $"{Application.ProductName}-SettingsData.txt";
+        private string settingsDataPath = Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), $"{Application.ProductName}-SettingsData.txt");
 
         /// <summary>
         /// The associated icon bitmap.
@@ -71,11 +71,11 @@ namespace RenameHierarchy
             if (!File.Exists(this.settingsDataPath))
             {
                 // Create new settings file
-                this.SaveSettingsFile(this.settingsDataPath, new SettingsData());
+                Shared.SaveSettingsFile(this.settingsDataPath, new SettingsData());
             }
 
             // Load settings from disk
-            this.settingsData = this.LoadSettingsFile(this.settingsDataPath);
+            this.settingsData = Shared.LoadSettingsFile(this.settingsDataPath);
 
             // Update the program by registry key
             this.UpdateByRegistryKey();
@@ -273,51 +273,7 @@ namespace RenameHierarchy
             this.settingsData.EnableUndo = this.enableUndoToolStripMenuItem.Checked;
 
             // Save settings data to disk
-            this.SaveSettingsFile(this.settingsDataPath, this.settingsData);
-        }
-
-        /// <summary>
-        /// Loads the settings file.
-        /// </summary>
-        /// <returns>The settings file.</returns>
-        /// <param name="settingsFilePath">Settings file path.</param>
-        private SettingsData LoadSettingsFile(string settingsFilePath)
-        {
-            // Use file stream
-            using (FileStream fileStream = File.OpenRead(settingsFilePath))
-            {
-                // Set xml serialzer
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(SettingsData));
-
-                // Return populated settings data
-                return xmlSerializer.Deserialize(fileStream) as SettingsData;
-            }
-        }
-
-        /// <summary>
-        /// Saves the settings file.
-        /// </summary>
-        /// <param name="settingsFilePath">Settings file path.</param>
-        /// <param name="settingsDataParam">Settings data parameter.</param>
-        private void SaveSettingsFile(string settingsFilePath, SettingsData settingsDataParam)
-        {
-            try
-            {
-                // Use stream writer
-                using (StreamWriter streamWriter = new StreamWriter(settingsFilePath, false))
-                {
-                    // Set xml serialzer
-                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(SettingsData));
-
-                    // Serialize settings data
-                    xmlSerializer.Serialize(streamWriter, settingsDataParam);
-                }
-            }
-            catch (Exception exception)
-            {
-                // Advise user
-                MessageBox.Show($"Error saving settings file.{Environment.NewLine}{Environment.NewLine}Message:{Environment.NewLine}{exception.Message}", "File error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            Shared.SaveSettingsFile(this.settingsDataPath, this.settingsData);
         }
 
         /// <summary>
