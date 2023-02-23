@@ -24,6 +24,8 @@ v0.1.0
 - Save settings data on exit.
 - Always on top.
 
+Day #54, Week #08 @ February 23, 2023
+
 ==========
 
 ## Release supporters:
