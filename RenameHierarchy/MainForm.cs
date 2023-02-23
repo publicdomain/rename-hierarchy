@@ -311,12 +311,18 @@ namespace RenameHierarchy
         /// <param name="e">Event arguments.</param>
         private void OnFolderNameLengthToolStripMenuItemClick(object sender, EventArgs e)
         {
+            // Unset topmost
+            this.TopMost = false;
+
             // Try to parse integer from user input
             if (int.TryParse(Interaction.InputBox("Enter new name length:", "Set name length", this.settingsData.NameLength.ToString()), out int parsedInt) && parsedInt > 0)
             {
                 // Set 
                 this.settingsData.NameLength = parsedInt;
             }
+
+            // Set topmost
+            this.TopMost = this.alwaysOnTopToolStripMenuItem.Checked;
         }
 
         /// <summary>
@@ -331,6 +337,9 @@ namespace RenameHierarchy
 
             // Toggle checked
             toolStripMenuItem.Checked = !toolStripMenuItem.Checked;
+
+            // Set topmost by check box
+            this.TopMost = this.alwaysOnTopToolStripMenuItem.Checked;
         }
 
         /// <summary>
@@ -340,8 +349,8 @@ namespace RenameHierarchy
         /// <param name="e">Event arguments.</param>
         private void OnMainFormLoad(object sender, EventArgs e)
         {
-            // Set enable undo 
-            this.enableUndoToolStripMenuItem.Checked = this.settingsData.EnableUndo;
+            // Set topmost
+            this.TopMost = this.settingsData.AlwaysOnTop;
         }
 
         /// <summary>
@@ -351,8 +360,8 @@ namespace RenameHierarchy
         /// <param name="e">Event arguments.</param>
         private void OnMainFormFormClosing(object sender, FormClosingEventArgs e)
         {
-            // Set enable undo 
-            this.settingsData.EnableUndo = this.enableUndoToolStripMenuItem.Checked;
+            // Always on top
+            this.settingsData.AlwaysOnTop = this.alwaysOnTopToolStripMenuItem.Checked;
 
             // Save settings data to disk
             Shared.SaveSettingsFile(this.settingsDataPath, this.settingsData);
@@ -365,8 +374,14 @@ namespace RenameHierarchy
         /// <param name="e">Event arguments.</param>
         private void OnContextMenuItemTextToolStripMenuItemClick(object sender, EventArgs e)
         {
+            // Unset topmost
+            this.TopMost = false;
+
             // Set new context menu item text
             string contextMenuItemText = Interaction.InputBox("Enter new context menu item text:", "Set text", this.settingsData.ContextMenuItemText);
+
+            // Set topmost
+            this.TopMost = this.alwaysOnTopToolStripMenuItem.Checked;
 
             // Check it's not empty and it's actually a different one
             if (contextMenuItemText.Length > 0 && contextMenuItemText != this.settingsData.ContextMenuItemText)

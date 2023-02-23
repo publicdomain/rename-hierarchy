@@ -24,17 +24,21 @@ namespace PublicDomain
         }
 
         /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="T:PublicDomain.SettingsData"/> always on top.
+        /// </summary>
+        /// <value><c>true</c> if always on top; otherwise, <c>false</c>.</value>
+        public bool AlwaysOnTop { get; set; } = true;
+
+        /// <summary>
         /// Gets or sets the length of the name.
         /// </summary>
         /// <value>The length of the name.</value>
         public int NameLength { get; set; } = 5;
 
-        public string ContextMenuItemText { get; set; } = "Rename hierarchy";
-
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="T:PublicDomain.SettingsData"/> enable undo.
+        /// Gets or sets the context menu item text.
         /// </summary>
-        /// <value><c>true</c> if enable undo; otherwise, <c>false</c>.</value>
-        public bool EnableUndo { get; set; } = true;
+        /// <value>The context menu item text.</value>
+        public string ContextMenuItemText { get; set; } = "Rename hierarchy";
     }
 }

@@ -39,8 +39,8 @@ namespace RenameHierarchy
         	this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.customizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.nameLengthToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        	this.contextMenuItemTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        	this.enableUndoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.freeReleasesPublicDomainisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.originalThreadDonationCodercomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,7 +53,7 @@ namespace RenameHierarchy
         	this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
         	this.addButton = new System.Windows.Forms.Button();
         	this.removeButton = new System.Windows.Forms.Button();
-        	this.contextMenuItemTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        	this.alwaysOnTopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.mainMenuStrip.SuspendLayout();
         	this.mainStatusStrip.SuspendLayout();
         	this.tableLayoutPanel.SuspendLayout();
@@ -118,22 +118,21 @@ namespace RenameHierarchy
         	this.nameLengthToolStripMenuItem.Text = "&Folder name length";
         	this.nameLengthToolStripMenuItem.Click += new System.EventHandler(this.OnFolderNameLengthToolStripMenuItemClick);
         	// 
+        	// contextMenuItemTextToolStripMenuItem
+        	// 
+        	this.contextMenuItemTextToolStripMenuItem.Name = "contextMenuItemTextToolStripMenuItem";
+        	this.contextMenuItemTextToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+        	this.contextMenuItemTextToolStripMenuItem.Text = "&Context menu item text";
+        	this.contextMenuItemTextToolStripMenuItem.Click += new System.EventHandler(this.OnContextMenuItemTextToolStripMenuItemClick);
+        	// 
         	// optionsToolStripMenuItem
         	// 
         	this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-        	        	        	this.enableUndoToolStripMenuItem});
+        	        	        	this.alwaysOnTopToolStripMenuItem});
         	this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
         	this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
         	this.optionsToolStripMenuItem.Text = "&Options";
         	this.optionsToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.OnOptionsToolStripMenuItemDropDownItemClicked);
-        	// 
-        	// enableUndoToolStripMenuItem
-        	// 
-        	this.enableUndoToolStripMenuItem.Checked = true;
-        	this.enableUndoToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-        	this.enableUndoToolStripMenuItem.Name = "enableUndoToolStripMenuItem";
-        	this.enableUndoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-        	this.enableUndoToolStripMenuItem.Text = "&Enable undo";
         	// 
         	// helpToolStripMenuItem
         	// 
@@ -246,12 +245,13 @@ namespace RenameHierarchy
         	this.removeButton.UseVisualStyleBackColor = true;
         	this.removeButton.Click += new System.EventHandler(this.OnRemoveButtonClick);
         	// 
-        	// contextMenuItemTextToolStripMenuItem
+        	// alwaysOnTopToolStripMenuItem
         	// 
-        	this.contextMenuItemTextToolStripMenuItem.Name = "contextMenuItemTextToolStripMenuItem";
-        	this.contextMenuItemTextToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-        	this.contextMenuItemTextToolStripMenuItem.Text = "&Context menu item text";
-        	this.contextMenuItemTextToolStripMenuItem.Click += new System.EventHandler(this.OnContextMenuItemTextToolStripMenuItemClick);
+        	this.alwaysOnTopToolStripMenuItem.Checked = true;
+        	this.alwaysOnTopToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+        	this.alwaysOnTopToolStripMenuItem.Name = "alwaysOnTopToolStripMenuItem";
+        	this.alwaysOnTopToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+        	this.alwaysOnTopToolStripMenuItem.Text = "&Always on top";
         	// 
         	// MainForm
         	// 
@@ -276,8 +276,8 @@ namespace RenameHierarchy
         	this.ResumeLayout(false);
         	this.PerformLayout();
         }
+        private System.Windows.Forms.ToolStripMenuItem alwaysOnTopToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contextMenuItemTextToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem enableUndoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nameLengthToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem customizeToolStripMenuItem;

@@ -16,13 +16,13 @@ Targets Microsoft .NET framework v4.5
 
 v0.1.0
 
-- Perform UNDO when using a previous folder.
+- Ask for UNDO action when using a previous folder.
 - Customize context menu item text.
 - Customize folder name length (random digits).
-- Enable/disable UNDO functionality.
 - Centralized embedded database by LiteDB.
 - Long path support by AlphaFS.
 - Save settings data on exit.
+- Always on top.
 
 ==========
 
