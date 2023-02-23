@@ -75,6 +75,12 @@
     <None Include="Resources\rename-27285_640x640.ico" />
     <None Include="Resources\AlphaFS.dll" />
     <None Include="Resources\LiteDB.dll" />
+    <None Include="Resources\AlphaFS-LICENSE.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\LiteDB-LICENSE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources" />
