@@ -2,7 +2,7 @@
 
 Rename an entire hierarchy of folders.
 
-![RenameHierarchy v0.1.0]()
+![RenameHierarchy v0.1.0](https://user-images.githubusercontent.com/54631779/221053861-22157c4b-ee9c-4b08-802f-308eed46df57.png)
 
 Made for: **nkormanik**
 

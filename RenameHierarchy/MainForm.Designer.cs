@@ -41,6 +41,7 @@ namespace RenameHierarchy
         	this.nameLengthToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.contextMenuItemTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        	this.alwaysOnTopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.freeReleasesPublicDomainisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.originalThreadDonationCodercomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,7 +54,6 @@ namespace RenameHierarchy
         	this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
         	this.addButton = new System.Windows.Forms.Button();
         	this.removeButton = new System.Windows.Forms.Button();
-        	this.alwaysOnTopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.mainMenuStrip.SuspendLayout();
         	this.mainStatusStrip.SuspendLayout();
         	this.tableLayoutPanel.SuspendLayout();
@@ -133,6 +133,12 @@ namespace RenameHierarchy
         	this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
         	this.optionsToolStripMenuItem.Text = "&Options";
         	this.optionsToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.OnOptionsToolStripMenuItemDropDownItemClicked);
+        	// 
+        	// alwaysOnTopToolStripMenuItem
+        	// 
+        	this.alwaysOnTopToolStripMenuItem.Name = "alwaysOnTopToolStripMenuItem";
+        	this.alwaysOnTopToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+        	this.alwaysOnTopToolStripMenuItem.Text = "&Always on top";
         	// 
         	// helpToolStripMenuItem
         	// 
@@ -244,14 +250,6 @@ namespace RenameHierarchy
         	this.removeButton.Text = "&Remove from Windows Explorer";
         	this.removeButton.UseVisualStyleBackColor = true;
         	this.removeButton.Click += new System.EventHandler(this.OnRemoveButtonClick);
-        	// 
-        	// alwaysOnTopToolStripMenuItem
-        	// 
-        	this.alwaysOnTopToolStripMenuItem.Checked = true;
-        	this.alwaysOnTopToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-        	this.alwaysOnTopToolStripMenuItem.Name = "alwaysOnTopToolStripMenuItem";
-        	this.alwaysOnTopToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-        	this.alwaysOnTopToolStripMenuItem.Text = "&Always on top";
         	// 
         	// MainForm
         	// 

@@ -84,6 +84,9 @@ namespace RenameHierarchy
 
             // Update the program by registry key
             this.UpdateByRegistryKey();
+
+            // Set topmost checked state
+            this.alwaysOnTopToolStripMenuItem.Checked = this.settingsData.AlwaysOnTop;
         }
 
         /// <summary>
