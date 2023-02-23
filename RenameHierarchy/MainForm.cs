@@ -37,7 +37,7 @@ namespace RenameHierarchy
         /// <summary>
         /// The rename hierarchy key list.
         /// </summary>
-        private List<string> renameHierarchyKeyList = new List<string> { @"Software\Classes\directory\shell\Rename hierarchy" };
+        private List<string> renameHierarchyKeyList = new List<string>();
 
         /// <summary>
         /// The settings data path.
@@ -76,6 +76,11 @@ namespace RenameHierarchy
 
             // Load settings from disk
             this.settingsData = Shared.LoadSettingsFile(this.settingsDataPath);
+
+            /* Set values */
+
+            // Add context menu item text
+            this.renameHierarchyKeyList.Add($"Software\\Classes\\directory\\shell\\{this.settingsData.ContextMenuItemText}");
 
             // Update the program by registry key
             this.UpdateByRegistryKey();
@@ -122,6 +127,27 @@ namespace RenameHierarchy
         /// <param name="e">Event arguments.</param>
         private void OnAddButtonClick(object sender, EventArgs e)
         {
+            // Add the context menu
+            this.AddContextMenu(true);
+        }
+
+        /// <summary>
+        /// Handles the remove button click.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnRemoveButtonClick(object sender, EventArgs e)
+        {
+            // Remove the context menu
+            this.RemoveContextMenu(true);
+        }
+
+        /// <summary>
+        /// Adds the context menu.
+        /// </summary>
+        /// <param name="advise">If set to <c>true</c> advise.</param>
+        private void AddContextMenu(bool advise)
+        {
             try
             {
                 // Iterate renameHierarchy registry keys
@@ -137,11 +163,15 @@ namespace RenameHierarchy
                     registryKey.Close();
                 }
 
-                // Update the program by registry key
-                this.UpdateByRegistryKey();
+                // Check if must advise
+                if (advise)
+                {
+                    // Update the program by registry key
+                    this.UpdateByRegistryKey();
 
-                // Notify user
-                MessageBox.Show($"Rename hierarchy context menu added!{Environment.NewLine}{Environment.NewLine}Right-click in Windows Explorer to use it.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Notify user
+                    MessageBox.Show($"Rename hierarchy context menu added!{Environment.NewLine}{Environment.NewLine}Right-click in Windows Explorer to use it.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {
@@ -151,11 +181,10 @@ namespace RenameHierarchy
         }
 
         /// <summary>
-        /// Handles the remove button click.
+        /// Removes the context menu.
         /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnRemoveButtonClick(object sender, EventArgs e)
+        /// <param name="advise">If set to <c>true</c> advise.</param>
+        private void RemoveContextMenu(bool advise)
         {
             try
             {
@@ -166,11 +195,15 @@ namespace RenameHierarchy
                     Registry.CurrentUser.DeleteSubKeyTree(renameHierarchyKey);
                 }
 
-                // Update the program by registry key
-                this.UpdateByRegistryKey();
+                // Check if must advise
+                if (advise)
+                {
+                    // Update the program by registry key
+                    this.UpdateByRegistryKey();
 
-                // Notify user
-                MessageBox.Show("Rename hierarchy context menu removed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Notify user
+                    MessageBox.Show("Rename hierarchy context menu removed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {
@@ -272,11 +305,11 @@ namespace RenameHierarchy
         }
 
         /// <summary>
-        /// Handles the name length tool strip menu item click.
+        /// Handles the folder name length tool strip menu item click.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>
-        private void OnNameLengthToolStripMenuItemClick(object sender, EventArgs e)
+        private void OnFolderNameLengthToolStripMenuItemClick(object sender, EventArgs e)
         {
             // Try to parse integer from user input
             if (int.TryParse(Interaction.InputBox("Enter new name length:", "Set name length", this.settingsData.NameLength.ToString()), out int parsedInt) && parsedInt > 0)
@@ -323,6 +356,41 @@ namespace RenameHierarchy
 
             // Save settings data to disk
             Shared.SaveSettingsFile(this.settingsDataPath, this.settingsData);
+        }
+
+        /// <summary>
+        /// Handles the context menu item text tool strip menu item click.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnContextMenuItemTextToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // Set new context menu item text
+            string contextMenuItemText = Interaction.InputBox("Enter new context menu item text:", "Set text", this.settingsData.ContextMenuItemText);
+
+            // Check it's not empty and it's actually a different one
+            if (contextMenuItemText.Length > 0 && contextMenuItemText != this.settingsData.ContextMenuItemText)
+            {
+                // Check if it's active 
+                if (this.activityToolStripStatusLabel.Text == "Active")
+                {
+                    // Remove current context menu
+                    this.RemoveContextMenu(false);
+                }
+
+                // Set it into list (both active and inactive)
+                this.renameHierarchyKeyList[0] = $"Software\\Classes\\directory\\shell\\{contextMenuItemText}";
+
+                // Check if it's active again
+                if (this.activityToolStripStatusLabel.Text == "Active")
+                {
+                    // Add new context menu
+                    this.AddContextMenu(false);
+                }
+
+                // Set it into settings data
+                this.settingsData.ContextMenuItemText = contextMenuItemText;
+            }
         }
 
         /// <summary>

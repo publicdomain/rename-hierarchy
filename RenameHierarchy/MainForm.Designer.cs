@@ -53,6 +53,7 @@ namespace RenameHierarchy
         	this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
         	this.addButton = new System.Windows.Forms.Button();
         	this.removeButton = new System.Windows.Forms.Button();
+        	this.contextMenuItemTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.mainMenuStrip.SuspendLayout();
         	this.mainStatusStrip.SuspendLayout();
         	this.tableLayoutPanel.SuspendLayout();
@@ -104,24 +105,25 @@ namespace RenameHierarchy
         	// customizeToolStripMenuItem
         	// 
         	this.customizeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-        	        	        	this.nameLengthToolStripMenuItem});
+        	        	        	this.nameLengthToolStripMenuItem,
+        	        	        	this.contextMenuItemTextToolStripMenuItem});
         	this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
-        	this.customizeToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+        	this.customizeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
         	this.customizeToolStripMenuItem.Text = "&Customize";
         	// 
         	// nameLengthToolStripMenuItem
         	// 
         	this.nameLengthToolStripMenuItem.Name = "nameLengthToolStripMenuItem";
-        	this.nameLengthToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
-        	this.nameLengthToolStripMenuItem.Text = "&Name length";
-        	this.nameLengthToolStripMenuItem.Click += new System.EventHandler(this.OnNameLengthToolStripMenuItemClick);
+        	this.nameLengthToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+        	this.nameLengthToolStripMenuItem.Text = "&Folder name length";
+        	this.nameLengthToolStripMenuItem.Click += new System.EventHandler(this.OnFolderNameLengthToolStripMenuItemClick);
         	// 
         	// optionsToolStripMenuItem
         	// 
         	this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
         	        	        	this.enableUndoToolStripMenuItem});
         	this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-        	this.optionsToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+        	this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
         	this.optionsToolStripMenuItem.Text = "&Options";
         	this.optionsToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.OnOptionsToolStripMenuItemDropDownItemClicked);
         	// 
@@ -130,7 +132,7 @@ namespace RenameHierarchy
         	this.enableUndoToolStripMenuItem.Checked = true;
         	this.enableUndoToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
         	this.enableUndoToolStripMenuItem.Name = "enableUndoToolStripMenuItem";
-        	this.enableUndoToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+        	this.enableUndoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
         	this.enableUndoToolStripMenuItem.Text = "&Enable undo";
         	// 
         	// helpToolStripMenuItem
@@ -244,6 +246,13 @@ namespace RenameHierarchy
         	this.removeButton.UseVisualStyleBackColor = true;
         	this.removeButton.Click += new System.EventHandler(this.OnRemoveButtonClick);
         	// 
+        	// contextMenuItemTextToolStripMenuItem
+        	// 
+        	this.contextMenuItemTextToolStripMenuItem.Name = "contextMenuItemTextToolStripMenuItem";
+        	this.contextMenuItemTextToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+        	this.contextMenuItemTextToolStripMenuItem.Text = "&Context menu item text";
+        	this.contextMenuItemTextToolStripMenuItem.Click += new System.EventHandler(this.OnContextMenuItemTextToolStripMenuItemClick);
+        	// 
         	// MainForm
         	// 
         	this.AcceptButton = this.addButton;
@@ -267,6 +276,7 @@ namespace RenameHierarchy
         	this.ResumeLayout(false);
         	this.PerformLayout();
         }
+        private System.Windows.Forms.ToolStripMenuItem contextMenuItemTextToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enableUndoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nameLengthToolStripMenuItem;

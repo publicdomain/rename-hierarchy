@@ -29,6 +29,8 @@ namespace PublicDomain
         /// <value>The length of the name.</value>
         public int NameLength { get; set; } = 5;
 
+        public string ContextMenuItemText { get; set; } = "Rename hierarchy";
+
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="T:PublicDomain.SettingsData"/> enable undo.
         /// </summary>
